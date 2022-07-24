@@ -7,10 +7,10 @@ fetch('data.json')
 .then(data => {
 
     data.forEach((info, i) => {
-        console.log(info.company);
 
         var box_content = $('<div/>', {
-            'class': 'box box-content'
+            'class': 'box box-content',
+            'category': `${info.company}`
         });
         var logo = $('<img/>', {
             'class': 'logo',
@@ -83,14 +83,13 @@ fetch('data.json')
             'class': 'role require req',
             html: `${info.role}`
         });
+        box_content.addClass(`${info.role.toLowerCase()}`);
         var level = $('<p/>', {
             'class': 'level require req',
             html: `${info.level}`
         });
-        var lenguage = $('<p/>', {
-            'class': 'lenguage require req',
-            html: `${info.lenguaje}`
-        });
+        box_content.addClass(`${info.level.toLowerCase()}`);
+        
 
         box_content.appendTo(container);
         logo.appendTo(box_content);
@@ -109,11 +108,38 @@ fetch('data.json')
         requires.appendTo(box_content);
         role.appendTo(requires);
         level.appendTo(requires);
-        lenguage.appendTo(requires);
 
-        
+        info.languages.forEach((language, i) => {
+            var languages = $('<p/>', {
+                'class': `languages require req ${language}`,
+                html: `${language}`
+            });
+            box_content.addClass(`${language.toLowerCase()}`);
+            languages.appendTo(requires);
+        });
+
+        info.tools.forEach((tool, i) => {
+            var tools = $('<p/>', {
+                'class': `tools require req ${tool}`,
+                html: `${tool}`
+            });
+            box_content.addClass(`${tool.toLowerCase()}`);
+            tools.appendTo(requires);
+        }); 
     });
 
+    var my_input = document.querySelectorAll('.req');
+    my_input.forEach((skill) => {
+        skill.addEventListener('click', () => {
 
+            $(`.category[category="${skill.innerHTML.toLowerCase()}"]`).css('display', 'flex');
+            $('.box-content').hide();
+            $(`.${skill.innerHTML.toLowerCase()}`).css('display', 'flex');
+        });
+    });
+    var clear = $('#clear');
+    clear.click(() => {
+        $('.category').hide('slow');
+        $('.box-content').fadeIn('slow');
+    });
 });
-

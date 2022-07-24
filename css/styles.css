@@ -35,7 +35,10 @@ body {
   min-height: 35px;
   height: auto;
 }
-#container #search .cross {
+#container #search #skills {
+  display: flex;
+}
+#container #search #skills .cross {
   padding: 8px;
   background: hsl(180deg, 29%, 50%);
   border-top-right-radius: 5px;
@@ -43,22 +46,14 @@ body {
   cursor: pointer;
   transition: all 500ms ease;
 }
-#container #search .cross:hover {
+#container #search #skills .cross:hover {
   background: hsl(180deg, 14%, 20%);
 }
-#container #search input {
-  width: 100%;
-  font-size: 14px;
-  letter-spacing: 1px;
-  padding: 0 20px;
-  border-radius: 7px;
-  border: 1px solid lightgray;
-  color: gray;
-}
-#container #search .category {
+#container #search #skills .category {
   margin-right: 20px;
   display: flex;
   align-items: center;
+  display: none;
 }
 #container #search #clear {
   background: transparent;
@@ -77,13 +72,16 @@ body {
 }
 #container .box-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 30px 40px;
 }
 #container .box-content .logo {
   width: 100px;
   height: auto;
+}
+#container .box-content .main-content {
+  margin-left: 40px;
+  width: 250px;
 }
 #container .box-content .main-content .main-company {
   display: flex;
@@ -132,7 +130,7 @@ body {
   font-size: 16px;
 }
 #container .box-content .requires {
-  width: 55%;
+  flex-grow: 1;
   display: flex;
   justify-content: end;
   align-items: center;
