@@ -50,23 +50,13 @@ $dark:hsl(180, 14%, 20%);
 
         #skills{
             display: flex;
-
-            .cross{
-                padding: 8px;
-                background: $primary;
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 5px;
-                cursor: pointer;
-                transition: all 500ms ease;
-            }
-            .cross:hover{
-                background: $dark;
-            }
+            flex-wrap: wrap;
     
             .category{
                 margin-right: 20px;
                 display: flex;
                 align-items: center;
+                margin-bottom: 10px;
                 display: none;
             }
         }
@@ -80,6 +70,7 @@ $dark:hsl(180, 14%, 20%);
             color: $primary;
             font-weight: bold;
             font-size: 15px;
+            margin: auto 10px;
             cursor: pointer;
             transition: all 800ms ease;
         }
@@ -148,9 +139,11 @@ $dark:hsl(180, 14%, 20%);
             display: flex;
             justify-content:end;
             align-items: center;
+            flex-wrap: wrap;
 
             .req{
                 margin-left: 15px;
+                margin-bottom: 10px;
                 cursor: pointer;
                 transition: all 500ms ease;
             }
@@ -159,8 +152,5 @@ $dark:hsl(180, 14%, 20%);
                 color: white;
             }
         }
-
     }
-
 }
-
